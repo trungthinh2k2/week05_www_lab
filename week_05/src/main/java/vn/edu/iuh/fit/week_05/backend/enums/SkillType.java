@@ -4,13 +4,15 @@ import lombok.Getter;
 
 @Getter
 public enum SkillType {
-    SOFT_SKILL(1),
-    UNSPECIFIC(2),
-    TECHNICAL_SKILL(3);
+    UNSPECIFIC(0),
 
-    private final int type;
+    TECHNICAL_SKILL(1),
 
-    SkillType(int type) {
-        this.type = type;
+    SOFT_SKILL(2);
+
+    private final int value;
+    SkillType(int value) {
+        this.value = value;
     }
+
 }

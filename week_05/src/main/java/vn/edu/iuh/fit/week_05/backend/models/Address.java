@@ -1,5 +1,6 @@
 package vn.edu.iuh.fit.week_05.backend.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.neovisionaries.i18n.CountryCode;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -19,7 +20,7 @@ public class Address {
     @Column(name = "city", columnDefinition = "varchar(50)")
     private String city;
     @Column(name = "country", columnDefinition = "smallint(6)")
-    private CountryCode country;
+    private CountryCode country = CountryCode.VN;
 
     @Column(name = "zipcode", columnDefinition = "varchar(7)")
     private String zipCode;
@@ -28,8 +29,9 @@ public class Address {
     @Column(name = "number", columnDefinition = "varchar(20)")
     private String number;
 
-    @OneToOne(mappedBy = "address")
-    private Candidate candidate;
-    @OneToOne(mappedBy = "address")
-    private Company company;
+
+    @Override
+    public String toString() {
+        return zipCode + ", "+number+" "+street+", "+city+", "+ country;
+    }
 }

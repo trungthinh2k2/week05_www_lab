@@ -1,5 +1,6 @@
 package vn.edu.iuh.fit.week_05.backend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,8 +29,20 @@ public class Experience {
     @Column(name = "work_desc", columnDefinition = "varchar(400)")
     private String worrkDesscription;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "can_id")
     private Candidate candidate;
 
+    @Override
+    public String toString() {
+        return "Experience{" +
+                "id=" + id +
+                ", companyName='" + companyName + '\'' +
+                ", fromDate=" + fromDate +
+                ", toDate=" + toDate +
+                ", role='" + role + '\'' +
+                ", worrkDesscription='" + worrkDesscription + '\'' +
+                ", candidate=" + candidate +
+                '}';
+    }
 }

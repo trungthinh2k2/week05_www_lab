@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,15 +21,29 @@ public class Company {
     private String name;
     @Column(name = "about", columnDefinition = "varchar(2000)")
     private String about;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "address")
     private Address address;
+    @Column(name = "email")
+    private String email;
     @Column(name = "phone")
     private String phone;
     @Column(name = "web_url")
     private String webURL;
-//    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
-//    private List<Job> jobs;
-    @Column(name = "email")
-    private String email;
+    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
+    private List<Job> jobs;
+
+    @Override
+    public String toString() {
+        return "Company{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", about='" + about + '\'' +
+                ", address=" + address +
+                ", phone='" + phone + '\'' +
+                ", webURL='" + webURL + '\'' +
+                ", jobs=" + jobs +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

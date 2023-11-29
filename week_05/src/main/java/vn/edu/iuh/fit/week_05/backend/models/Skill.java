@@ -27,5 +27,14 @@ public class Skill {
     @OneToMany(mappedBy = "skill", fetch = FetchType.LAZY)
     private List<JobSkill> jobSkills;
 
-
+    @Override
+    public String toString() {
+        return "Skill{" +
+                "id=" + id +
+                ", skillType=" + skillType +
+                ", skillName='" + skillName + '\'' +
+                ", skillDescription='" + skillDescription + '\'' +
+                ", jobSkills=" + jobSkills +
+                '}';
+    }
 }

@@ -4,15 +4,16 @@ import lombok.Getter;
 
 @Getter
 public enum SkillLevel {
-    MASTER("m"),
-    BEGINER("b"),
-    ADVANCED("a"),
-    PROFESSIONAL("p"),
-    IMTERMEDIATE("i");
 
-    private final String level;
+    BEGINER(1),
+    IMTERMEDIATE(2),
+    ADVANCED(3),
+    PROFESSIONAL(4),
+    MASTER(5);
 
-    SkillLevel(String level) {
+    private final int level;
+
+    SkillLevel(int level) {
         this.level = level;
     }
 }
