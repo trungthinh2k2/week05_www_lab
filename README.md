@@ -27,3 +27,6 @@ Hãy tạo một ứng dụng web sử dụng spring boot rồi thực hiện c�
 #### danh sách job của company:
 ![ListJobOfCompany](https://github.com/trungthinh2k2/week05_www_lab/assets/89030667/1b7fad58-1033-44cc-b0e2-ebcb0a7ba816)
 
+### CSDL sau khi thêm và cập nhật candidate:
+![result](https://github.com/trungthinh2k2/week05_www_lab/assets/89030667/957a367a-4172-4abf-8452-2565cba92005)
+
