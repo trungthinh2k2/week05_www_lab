@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<style>
+    div.page {
+        padding: 5px 5px;
+        display: inline-block;
+    }
+    div.page a.active {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    th{
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 8px;
+    }
+    tr{
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 8px;
+    }
+
+    td{
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Company with pagination</title>
+    <meta charset="UTF-8">
+    <title>Candidates</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<h1 class="text-center">LIST COMPANIES</h1>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Company Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Web Url</th>
+        <th>About</th>
+        <th>Address</th>
+        <th>View Job</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="company : ${companyPage.content}">
+        <td th:text="${company.id}"></td>
+        <td th:text="${company.name}"></td>
+        <td th:text="${company.phone}"></td>
+        <td th:text="${company.email}"></td>
+        <td th:text="${company.webURL}"></td>
+        <td th:text="${company.about}"></td>
+        <td th:text="${company.address}"></td>
+        <td><a class="btn btn-primary" th:href="@{/{companyId}/jobs(companyId=${company.id})}">View detail</a></td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <div class="page"  th:if="${companyPage.totalPages > 0}" th:each="pageNumber : ${pageNumbers}">
+        <a th:href="@{/companies(size=${companyPage.size}, page=${pageNumber})}"
+           th:text="${pageNumber}"
+           th:class="${pageNumber==companyPage.number + 1} ? active"></a>
+    </div>
+</div>
+<br/>
+</body>
+</html>
